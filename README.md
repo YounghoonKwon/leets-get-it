@@ -10,6 +10,8 @@
  - EASY : 2point / MEDIUM : 4 point / HARD : 12 point
  - 하루 12포인트만큼 문제 제출
  - Ex) EASY 6문제 or MEDIUM 3문제 or HARD 1문제 or EASY 4문제, MEDIUM 1문제
+ - 제출하실때 파일명은, 본인 실명.확장자 또는 이름.확장자로 해주세요. 누가 누구인지 분별이 힘듭니다.(ex younghoon.py OR younghoonkwon.py)
+ - 다 못푸셨을 경우에는 파일명앞에 (incomplete)를 붙여주세요. (ex (incomplete)younghoon.py)
 
 ### * 문제 출제
  - 리트코드 1번부터 무료문제 정주행
