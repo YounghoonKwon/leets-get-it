@@ -6,7 +6,6 @@ class Solution:
         i = 0
         j = len(nums)-1
         idxList.sort(key=lambda x: x[0])
-        print(idxList)
         while i<j:
             result = idxList[i][0]+idxList[j][0]
             if result < target:
