@@ -8,17 +8,15 @@ class Solution:
         twosum = 0
         exp = 0
         ten = 10
-        while l1:
-            twosum += (ten**exp)*l1.val
-            l1 = l1.next
+        while l1 or l2:
+            if l1:
+                twosum += (ten**exp)*l1.val
+                l1 = l1.next
+            if l2:
+                twosum += (ten**exp)*l2.val
+                l2 = l2.next
             exp +=1
-        else:
-            exp =0
-            
-        while l2:
-            twosum += (ten**exp)*l2.val
-            l2 = l2.next
-            exp +=1
+            print('-'*20)
         return makingReturnNode(twosum)
         
 
