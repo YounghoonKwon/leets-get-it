@@ -1,0 +1,16 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        # edge case
+        if not s:
+            return 0
+        # careful of spaces
+        for i in range(len(s), 0, -1):
+            start = 0
+            end = i - 1
+            while end <= len(s) - 1:
+                current = s[start:end + 1]
+
+                if len(set(current)) == len(current):
+                    return i
+                start += 1
+                end += 1
