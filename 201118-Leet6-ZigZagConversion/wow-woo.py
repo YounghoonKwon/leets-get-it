@@ -28,8 +28,3 @@ class Solution:
             current = ''.join(matrix[idx_row])
             result += current
         return result
-        # PAYPALISHIRING
-        # 
-        # P   A   H   N
-        # A P L S I I G
-        # Y   I   R
