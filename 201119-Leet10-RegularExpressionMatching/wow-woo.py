@@ -1,51 +1,29 @@
 class Solution:
     def isMatch(self, s: str, p: str) -> bool:
-        # Edge case
-        if p is '':
-            if s is '':
-                return True
-            else:
-                return False
-        # Simplified version:
-        # if not p:
-        #     return not s
+        st_s = 0
+        st_p = 0
+        dp = {}
+        
+        return Solution.recur(st_s, st_p, s, p, dp)
 
-        if s:
-            first_char_match = p[0] in (s[0], '.')
+    
+    @staticmethod
+    def recur(st_s, st_p, s, p, dp):
+        if st_p == len(p):
+            print('end point', st_s==len(s))
+            return st_s == len(s)
+        if (st_s, st_p) in dp:
+            return dp[st_s, st_p]
+        curr_match = True if (st_s < len(s) and p[st_p] in ['.', s[st_s]]) else False
+        if st_p <= len(p) - 2 and p[st_p + 1] == '*':
+            branch1 = curr_match and Solution.recur(st_s + 1, st_p, s, p, dp) 
+            branch2 = Solution.recur(st_s, st_p + 2, s, p, dp)
+            print('bran1', branch1)
+            print('branch2', branch2)
+            print('dp1', dp)
+            dp[st_s, st_p] = branch1 or branch2
+            print('dp2', dp)
         else:
-            first_char_match = False
-        # Simplified version:
-        # first_char_match = bool(s) and p[0] in (s[0], '.')
-
-        # len(p) < 2, p[1] will raise error
-        if len(p) > 1 and p[1] == '*':
-            """
-            Try all possibilities:
-            1) 0 occurrence, zero_ocr
-            2) repeat is for one or more occurrence.
-               This is bit subtle. The correct number of times of 
-               deleting/ignoring/skipping will result in either case
-               being True.
-               e.g. s = 'aaa', p = 'a*a'
-                    skips twice
-                    s = 'a', p[2:] = 'a' -> True
-               e.g. s = 'aab', p = 'a*b'
-                    ...
-                    s = 'b', p = 'a*b'
-                    zero_ocr = isMatch('b', 'b') -> True
-                    first_char_match = False
-                    return zero_ocr, thus return True in the end
-            """
-            zero_ocr = self.isMatch(s, p[2:])
-            if first_char_match:
-                repeat = self.isMatch(s[1:], p)
-                return zero_ocr or repeat
-            return zero_ocr
-            # Simplified version
-            # return self.isMatch(s, p[2:]) \
-            #        or (first_char_match and self.isMatch(s[1:], p))
-        else:
-            if first_char_match:
-                return self.isMatch(s[1:], p[1:])
-            else:
-                return False
+            dp[st_s, st_p] = curr_match and Solution.recur(st_s + 1, st_p + 1, s, p, dp)
+        print('tip of this branch')
+        return dp[st_s, st_p]
