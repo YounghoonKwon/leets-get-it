@@ -1,27 +1,18 @@
-class Solution:
-    def isValid(self, s: str) -> bool:
+class Solution(object):
+	def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        d = {'(':')', '{':'}','[':']'}
         stack = []
-        
-        for i in range(len(s)):
-            #Opening parentheses
-            if s[i] in ['[', '(', '{']:
-                stack.append(s[i])
-            #Closing parentheses
-            elif s[i] in [']',')','}']:
-                #absence means order is NOT valid or Not match
-                if len(stack) == 0:
-                    return False
-                #Bring latest item from stack
-                last =stack.pop()
-                
-                #Concatenate to simply comapre
-                current = last + s[i]
-                if current not in ['[]', '{}', '()']:
-                    return False
-            else:
-                continue
-                
-        # string is not formed pairs
-        if len(stack) != 0:
-            return False
-        return True       
+        for i in s:
+            if i in d:  # 1
+                stack.append(i)
+            elif len(stack) == 0 or d[stack.pop()] != i:  # 2
+                return False
+        return len(stack) == 0 # 3
+	
+# 1. if it's the left bracket then we append it to the stack
+# 2. else if it's the right bracket and the stack is empty(meaning no matching left bracket), or the left bracket doesn't match
+# 3. finally check if the stack still contains unmatched left bracket
