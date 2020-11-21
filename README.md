@@ -7,9 +7,7 @@
  - 평일 월-금
  - 문제 제출 -> 깃헙에 공지
  - 마감 시간 : 23:59:59(폴더명 데드라인 기재, ex)201120 -> 20년 11월 20일 11시 59분 59초까지 제출)
- - EASY : 2point / MEDIUM : 4 point / HARD : 12 point
- - 하루 12포인트만큼 문제 제출
- - Ex) EASY 6문제 or MEDIUM 3문제 or HARD 1문제 or EASY 4문제, MEDIUM 1문제
+ - 월-목 Medium 3문제씩 / 금 Hard 1문제
  - 제출하실때 파일명은, 본인 firstname+lastname.확장자 또는 firstname.확장자 로 해주세요. 누가 누구인지 분별이 힘듭니다.(ex younghoon.py OR younghoonkwon.py)
  - 다 못푸셨을 경우에는 파일명앞에 (incomplete)를 붙여주세요. (ex (incomplete)younghoon.py)
 
