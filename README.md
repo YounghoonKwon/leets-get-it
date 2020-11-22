@@ -1,7 +1,7 @@
-# leets-get-it (리트푸는사람들)
+# Team name: leets-get-it
 ## group study repository consisting of 10 people, focus on solving problem every day
 
-### 알고리즘 온라인 스터디 운영 계획
+### Study Operational plan
 
 ### * 문제 출제 / 제출 기한
  - 평일 월-금
@@ -12,7 +12,7 @@
  - 다 못푸셨을 경우에는 파일명앞에 (incomplete)를 붙여주세요. (ex (incomplete)younghoon.py)
 
 ### * 문제 출제
- - 리트코드 1번부터 무료문제 정주행
+ - 매주 다른 유형 문제 풀이.
 
 ### * 한 문제라도 미 제출 시 벌금 1000원
  - 못 푸는 것이 아닌 안 푸는 것에 대한 벌금임.
