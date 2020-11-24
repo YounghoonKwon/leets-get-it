@@ -1,19 +1,37 @@
-class Solution:
-    def removeDuplicateLetters(self, s: str) -> str:
+class Solution(object):
+    def removeDuplicateLetters(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        #purpose: to have as less characters as possible to return the characters subset lexicographically
+        stack = []
         
-        myC=collections.Counter(s)
-        print('myC', myC)
-        res=[]
-        seen=set()
+        #purpose: to record if the character is seen earlier or not
+        seen = set()
         
-        for c in s:
+        #purpose: to record last index of each character
+        last_occurrence = {}
+        
+        for i in range(len(s)):
+            last_occurrence[s[i]] = i
             
-            while res and c<res[-1] and myC[res[-1]]>0 and c not in seen:
-                x=res.pop()
-                seen.discard(x)
+        for index, character in enumerate(s):
+            
+            if character not in seen:
                 
-            if c not in seen:    
-                res.append(c)
-                seen.add(c)
-            myC[c]-=1
-        return ''.join(res)   
+                #   if current character is not seen earleir:
+                #   while the stack is not empty:
+                #       a)compare current character with previous character on stack.
+                #       b) if lexicographically less and the previous character has future occurences, pop the previous character from stack.
+                #       c) delete the previous character from seen dict
+                #
+                #   add current character to seen
+                #   append current character to stack
+                #   return contents of stack as result
+                while stack and character < stack[-1] and index < last_occurrence[stack[-1]]:
+                    seen.discard(stack.pop())
+                seen.add(character)
+                stack.append(character)
+        
+        return ''.join(stack)
