@@ -1,21 +1,13 @@
 class Solution:
-    def canJump(self, nums: List[int]) -> bool:
-        # array of positive integers
-        last = len(nums) -1
-        
-        return self.rcs( nums, 0)
-        
-    def rcs(self, nums, current):
-        if current == len(nums)-1:
-            return True
-        
-        max = nums[current]
-        if max <= 0:
-            return False
+    def canJump(self, nums):
+        bestJumper,i = nums[0],0
+        # if bestJump is lesser than index, you couldn't make it the index already
+        while i<len(nums) and i<= bestJumper: 
+            # you are succesfully on that index
+            print('i+nums[i]', i+nums[i])
             
-        for i in range(1, max+1):
-            if i <= len(nums)-1:
-                test = self.rcs(nums, current + i)
-                if test:
-                    return True
-        return False
+            #update bestJump with maxJump + index
+            bestJumper,i = max(bestJumper,i+nums[i]), i+1
+            print('bestJumper', bestJumper, i)
+        print('best', bestJumper)
+        return bestJumper>=len(nums)-1
